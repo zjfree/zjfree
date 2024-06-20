@@ -1,0 +1,290 @@
+<!-- 按钮样式 zjfree 2024-06-20 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>按钮样式</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+div{
+	margin: 20px 10px;
+}
+button{
+	margin-right: 10px;
+	transition: all 0.2s;
+}
+
+.btn1{
+	display: inline-block;
+	border: solid 1px #333;
+	background-color: #eee;
+	color:#000;
+	padding: 5px 10px;
+	border-radius: 10px / 50%;
+	box-shadow: 3px 3px 5px #aaa;
+	cursor: pointer;
+}
+.btn1:hover{
+	background-color: #fff;
+	border: solid 1px #000;
+}
+
+.btn2{
+	display: inline-block;
+	background-color: #33f;
+	color:#fff;
+	padding: 7px 15px;
+	border-radius: 10px;
+	cursor: pointer;
+	border:solid 1px transparent;
+}
+.btn2:hover{
+	background-color: #00f;
+	box-shadow: 3px 3px 5px #aaa;
+	border:solid 1px #000;
+}
+
+.btn3{
+	display: inline-block;
+	background-color: #bbf;
+	color:#000;
+	padding: 7px 15px;
+	cursor: pointer;
+	border:solid 1px gray;
+}
+.btn3:hover{
+	background-color: #ccf;
+	transform: translateY(-2px);
+}
+
+.btn4{
+	display: inline-block;
+	background: linear-gradient(to bottom, #66f 0%, #99f 20%, #00f 100%);
+	color:#fff;
+	padding: 7px 15px;
+	cursor: pointer;
+	border:none;
+	border-radius: 5px;
+	text-shadow: 0 0 5px #000;
+}
+.btn4:hover{
+	background: linear-gradient(to bottom, #66f 0%, #00f 100%);
+	box-shadow: 0px 3px 5px #aaa;
+	text-shadow: none;
+}
+
+.btn5{
+	display: inline-block;
+	box-shadow: inset 0 0 10px #33f;
+	background: #ccf;
+	color:#000;
+	padding: 7px 15px;
+	cursor: pointer;
+	border:none;
+	border-radius: 10px;
+}
+.btn5:hover{
+	box-shadow: none;
+}
+
+.btn6{
+	display: inline-block;
+	border: groove 5px #33f;
+	background: #ddf;
+	color:#000;
+	padding: 7px 15px;
+	cursor: pointer;
+}
+.btn6:hover{
+	background: #fff;
+}
+
+.btn7{
+	display: inline-block;
+	background: radial-gradient(circle at 50% 0%, #66f, #00f);
+	color:#fff;
+	padding: 7px 15px;
+	cursor: pointer;
+	border:none;
+	border-radius: 10px;
+}
+.btn7:hover{
+	background: radial-gradient(circle at 50% 100%, #66f, #00f);
+}
+
+.btn8{
+	display: inline-block;
+	background-color: #33f;
+	clip-path: polygon(0% 50%, 5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%);
+	color:#fff;
+	padding: 7px 15px;
+	cursor: pointer;
+	border:none;
+}
+.btn8:hover{
+	background-color: #00f;
+}
+
+.btn9{
+	display: inline-block;
+	background-color: #33f;
+	clip-path: polygon(0% 10%, 5% 0%, 95% 0%, 100% 10%, 100% 90%, 95% 100%, 5% 100%, 0% 90%);
+	color:#fff;
+	padding: 7px 15px;
+	cursor: pointer;
+	border:none;
+}
+.btn9:hover{
+	background-color: #00f;
+	clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.btn10{
+	display: inline-block;
+	background-color: #33f;
+	clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+	color:#fff;
+	width: 100px;
+	height: 81px;
+	line-height: 81px;
+	cursor: pointer;
+	border:none;
+	margin-right:55px;
+}
+.btn10:hover{
+	background-color: #00f;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>按钮样式</h1>
+
+<div>
+	<button class="btn1">按钮测试1</button>
+	<button class="btn1">按钮测试2</button>
+	<button class="btn1">按钮测试3</button>
+</div>
+
+<div>
+	<button class="btn2">按钮测试1</button>
+	<button class="btn2" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn2" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn2" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn2" style="filter: hue-rotate(240deg);">按钮测试3</button>
+	<button class="btn2" style="filter: hue-rotate(300deg);">按钮测试3</button>
+</div>
+
+<div>
+	<button class="btn3">按钮测试1</button>
+	<button class="btn3" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn3" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn3" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn3" style="filter: hue-rotate(240deg);">按钮测试3</button>
+	<button class="btn3" style="filter: hue-rotate(300deg);">按钮测试3</button>
+</div>
+
+<div>
+	<button class="btn4">按钮测试1</button>
+	<button class="btn4" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn4" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn4" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn4" style="filter: hue-rotate(240deg);">按钮测试3</button>
+	<button class="btn4" style="filter: hue-rotate(300deg);">按钮测试3</button>
+</div>
+
+<div>
+	<button class="btn5">按钮测试1</button>
+	<button class="btn5" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn5" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn5" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn5" style="filter: hue-rotate(240deg);">按钮测试3</button>
+	<button class="btn5" style="filter: hue-rotate(300deg);">按钮测试3</button>
+</div>
+
+<div>
+	<button class="btn6">按钮测试1</button>
+	<button class="btn6" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn6" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn6" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn6" style="filter: hue-rotate(240deg);">按钮测试3</button>
+	<button class="btn6" style="filter: hue-rotate(300deg);">按钮测试3</button>
+</div>
+
+<div>
+	<button class="btn7">按钮测试1</button>
+	<button class="btn7" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn7" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn7" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn7" style="filter: hue-rotate(240deg);">按钮测试3</button>
+	<button class="btn7" style="filter: hue-rotate(300deg);">按钮测试3</button>
+</div>
+
+<div>
+	<button class="btn8">按钮测试1</button>
+	<button class="btn8" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn8" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn8" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn8" style="filter: hue-rotate(240deg);">按钮测试3</button>
+	<button class="btn8" style="filter: hue-rotate(300deg);">按钮测试3</button>
+</div>
+
+<div>
+	<button class="btn9">按钮测试1</button>
+	<button class="btn9" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn9" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn9" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn9" style="filter: hue-rotate(240deg);">按钮测试3</button>
+	<button class="btn9" style="filter: hue-rotate(300deg);">按钮测试3</button>
+</div>
+
+<div>
+	<button class="btn10">按钮测试1</button>
+	<button class="btn10" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn10" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn10" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn10" style="filter: hue-rotate(240deg);">按钮测试3</button>
+	<button class="btn10" style="filter: hue-rotate(300deg);">按钮测试3</button>
+</div>
+<div style="margin-top:-58px; margin-left: 90px;">
+	<button class="btn10">按钮测试1</button>
+	<button class="btn10" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn10" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn10" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn10" style="filter: hue-rotate(240deg);">按钮测试3</button>
+</div>
+<div style="margin-top:-58px;">
+	<button class="btn10">按钮测试1</button>
+	<button class="btn10" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn10" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn10" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn10" style="filter: hue-rotate(240deg);">按钮测试3</button>
+	<button class="btn10" style="filter: hue-rotate(300deg);">按钮测试3</button>
+</div>
+<div style="margin-top:-58px; margin-left: 90px;">
+	<button class="btn10">按钮测试1</button>
+	<button class="btn10" style="filter: hue-rotate(60deg);">按钮测试2</button>
+	<button class="btn10" style="filter: hue-rotate(120deg);">按钮测试3</button>
+	<button class="btn10" style="filter: hue-rotate(180deg);">按钮测试3</button>
+	<button class="btn10" style="filter: hue-rotate(240deg);">按钮测试3</button>
+</div>
+<script>
+$(function(){
+	// JS
+	
+});
+</script>
+
+</body>
+</html>
