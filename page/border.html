@@ -124,6 +124,40 @@ body{
 	border:solid 10px transparent;
 	border-image: repeating-conic-gradient(deeppink 0 10deg, yellowgreen 0 20deg) 30 30;
 }
+#b20{
+	position: relative;
+	width: 320px;
+	height: 170px;
+	line-height: 170px;
+}
+#b20 svg{
+	position:absolute;
+	top:0;
+	left:0;
+	pointer-events: none;
+}
+#b20 .rect1{
+	stroke: #ddd;
+	stroke-width: 5;
+	fill:transparent;
+}
+#b20 .rect2{
+	stroke: #000;
+	stroke-width: 5;
+	stroke-dasharray: 10 10;
+	stroke-dashoffset: 0;
+	fill:transparent;
+	animation: move 0.5s infinite linear;
+}
+
+@keyframes move {
+	0% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: -20;
+	}
+}
 
 @keyframes fnColor
 {
@@ -188,6 +222,13 @@ body{
 	<div style="border-radius: 0px; border:inset 10px red;">inset</div>
 	<div style="border-radius: 0px; border:outset 10px red;">outset</div>
 	<div style="border-radius: 0px; border-color:red; border-width: 10px; border-style: solid dashed;">solid/dashed</div>
+	<div id="b20">
+		蚂蚁线
+		<svg xmlns="http://www.w3.org/2000/svg" width="320" height="170">
+			<rect class="rect1" x="5" y="5" width="310" height="160" rx="10"/>
+			<rect class="rect2" x="5" y="5" width="310" height="160" rx="10"/>
+		</svg>
+	</div>
 </div>
 
 <script>
