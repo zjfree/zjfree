@@ -16,7 +16,7 @@
 			padding: 0 10px;
 		}
 
-		.loading {
+		.loading,.m13 {
 			text-align: center;
 			border: solid 1px gray;
 			padding: 20px;
@@ -52,6 +52,7 @@
 		.m5 span {
 			border-radius: 0;
 			animation: am5 1s linear infinite alternate;
+			animation-direction: normal;
 		}
 
 		.m6 span {
@@ -62,7 +63,6 @@
 		.m7 span {
 			background-color: #0f0;
 			box-shadow: inset 0 0 5px #000;
-			outline: solid 1px #000;
 			animation: am7 1s linear infinite alternate;
 		}
 
@@ -75,6 +75,30 @@
 			border-radius: 0;
 			background-color: transparent;
 			animation: am9 1s linear infinite alternate;
+		}
+
+		.m10 span {
+			animation: am10 1s linear infinite alternate;
+		}
+		
+		.m11 span {
+			background-color: #ddd;
+			animation: am11 1s linear infinite alternate;
+		}
+
+		.m12 span {
+			border-radius: 0;
+			animation: am12 1s linear infinite alternate;
+			animation-direction: normal;
+		}
+		
+		.m13 .line1 {
+			stroke: #000;
+			stroke-width: 10;
+			stroke-dasharray: 30 10;
+			stroke-dashoffset: 0;
+			fill:transparent;
+			animation: am13 1s linear infinite;
 		}
 
 		.loading span:nth-child(2) {
@@ -239,6 +263,63 @@
 				filter: grayscale(0%);
 			}
 		}
+		
+		@keyframes am10 {
+			0% {
+				transform: translate(0, 0);
+			}
+
+			70% {
+				transform: translate(0, 0);
+			}
+
+			100% {
+				transform: translate(15px, 0);
+			}
+		}
+		
+		@keyframes am11 {
+			0% {
+				background-color: #ddd;
+			}
+
+			85% {
+				background-color: #ddd;
+			}
+			86% {
+				background-color: #00f;
+			}
+			100% {
+				background-color: #00f;
+			}
+		}
+		
+		@keyframes am12 {
+			0% {
+				transform: rotateY(0, 0, 0, 0);
+			}
+
+			70% {
+				transform: rotate3d(0, 0, 0, 0);
+			}
+
+			85% {
+				transform: rotate3d(0, 0.5, 0.5, 0.5turn);
+			}
+
+			100% {
+				transform: rotate3d(0.5, 0.5, 0, 0.5turn);
+			}
+		}
+		
+		@keyframes am13 {
+			0% {
+				stroke-dashoffset: 0;
+			}
+			100% {
+				stroke-dashoffset: -40;
+			}
+		}
 	</style>
 
 	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
@@ -283,7 +364,24 @@
 	<div class="loading m9">
 		<span>❤️</span><span>❤️</span><span>❤️</span><span>❤️</span><span>❤️</span><span>❤️</span><span>❤️</span><span>❤️</span><span>❤️</span><span>❤️</span>
 	</div>
+	
+	<div class="loading m10">
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+	</div>
 
+	<div class="loading m11">
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+	</div>
+
+	<div class="loading m12">
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+	</div>
+	
+	<div class="m13">
+		<svg xmlns="http://www.w3.org/2000/svg" width="300" height="20">
+			<line class="line1" x1="0" y1="10" x2="300" y2="10" />
+		</svg>
+	</div>
 	<script>
 		$(function () {
 			// JS
