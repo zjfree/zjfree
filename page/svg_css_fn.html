@@ -1,0 +1,134 @@
+<!-- SVG利用CSS函数 zjfree 2024-06-29 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVG利用CSS函数</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+#motion-demo {
+  offset-path: path("M20,20 C20,100 200,0 200,100");
+  animation: move 3000ms infinite alternate ease-in-out;
+  width: 40px;
+  height: 40px;
+  background: cyan;
+  text-align: center;
+  line-height: 40px;
+  font-size: 24px;
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+svg{
+	border:solid 1px gray;
+}
+
+g circle{
+	fill:red;
+	r:15px;
+	transition: all 0.3s;
+}
+g circle:hover{
+	r:20px;
+}
+
+.c1{ opacity: 1.0; transform: scale(1.0); animation: c1m linear 10s infinite; }
+.c2{ opacity: 0.9; transform: scale(0.9); animation: c2m linear 9s infinite; }
+.c3{ opacity: 0.8; transform: scale(0.8); animation: c3m linear 8.1s infinite; }
+.c4{ opacity: 0.7; transform: scale(0.7); animation: c4m linear 7.29s infinite; }
+.c5{ opacity: 0.6; transform: scale(0.6); animation: c5m linear 6.561s infinite; }
+.c6{ opacity: 0.5; transform: scale(0.5); animation: c6m linear 5.9049s infinite; }
+.c7{ opacity: 0.4; transform: scale(0.4); animation: c7m linear 5.31441s infinite; }
+.c8{ opacity: 0.3; transform: scale(0.3); animation: c8m linear 4.782969s infinite; }
+
+@keyframes c1m { 0% {transform:rotate(0) scale(1.0);} 100% {transform:rotate(360deg) scale(1.0);} }
+@keyframes c2m { 0% {transform:rotate(0) scale(0.9);} 100% {transform:rotate(360deg) scale(0.9);} }
+@keyframes c3m { 0% {transform:rotate(0) scale(0.8);} 100% {transform:rotate(360deg) scale(0.8);} }
+@keyframes c4m { 0% {transform:rotate(0) scale(0.7);} 100% {transform:rotate(360deg) scale(0.7);} }
+@keyframes c5m { 0% {transform:rotate(0) scale(0.6);} 100% {transform:rotate(360deg) scale(0.6);} }
+@keyframes c6m { 0% {transform:rotate(0) scale(0.5);} 100% {transform:rotate(360deg) scale(0.5);} }
+@keyframes c7m { 0% {transform:rotate(0) scale(0.4);} 100% {transform:rotate(360deg) scale(0.4);} }
+@keyframes c8m { 0% {transform:rotate(0) scale(0.3);} 100% {transform:rotate(360deg) scale(0.3);} }
+
+g circle:nth-child(1) { cx:calc(45%*cos(0deg  )); cy:calc(45%*sin(0deg  )); }
+g circle:nth-child(2) { cx:calc(45%*cos(30deg )); cy:calc(45%*sin(30deg )); }
+g circle:nth-child(3) { cx:calc(45%*cos(60deg )); cy:calc(45%*sin(60deg )); }
+g circle:nth-child(4) { cx:calc(45%*cos(90deg )); cy:calc(45%*sin(90deg )); }
+g circle:nth-child(5) { cx:calc(45%*cos(120deg)); cy:calc(45%*sin(120deg)); }
+g circle:nth-child(6) { cx:calc(45%*cos(150deg)); cy:calc(45%*sin(150deg)); }
+g circle:nth-child(7) { cx:calc(45%*cos(180deg)); cy:calc(45%*sin(180deg)); }
+g circle:nth-child(8) { cx:calc(45%*cos(210deg)); cy:calc(45%*sin(210deg)); }
+g circle:nth-child(9) { cx:calc(45%*cos(240deg)); cy:calc(45%*sin(240deg)); }
+g circle:nth-child(10){ cx:calc(45%*cos(270deg)); cy:calc(45%*sin(270deg)); }
+g circle:nth-child(11){ cx:calc(45%*cos(300deg)); cy:calc(45%*sin(300deg)); }
+g circle:nth-child(12){ cx:calc(45%*cos(330deg)); cy:calc(45%*sin(330deg)); }
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>SVG利用CSS函数</h1>
+<div style="position: relative;">
+	<svg version="1.1" baseProfile="full" width="230" height="120" xmlns="http://www.w3.org/2000/svg">
+		<path d="M20,20 C20,100 200,0 200,100" stroke="blue" stroke-width="5" fill="transparent">
+		</path>	
+	</svg>
+	<div id="motion-demo">🐮</div>
+</div>
+<div>
+	<svg version="1.1" width="300" height="300" viewBox="-150 -150 300 300" xmlns="http://www.w3.org/2000/svg">
+		<g class="c1">
+			<circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle>
+		</g>
+		<g class="c2">
+			<circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle>
+		</g>
+		<g class="c3">
+			<circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle>
+		</g>
+		<g class="c4">
+			<circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle>
+		</g>
+		<g class="c5">
+			<circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle>
+		</g>
+		<g class="c6">
+			<circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle>
+		</g>
+		<g class="c7">
+			<circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle>
+		</g>
+		<g class="c8">
+			<circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle><circle></circle>
+		</g>
+	</svg>
+</div>
+
+<script>
+$(function(){
+	// JS
+	
+});
+</script>
+
+</body>
+</html>
