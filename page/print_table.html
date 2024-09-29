@@ -1,0 +1,167 @@
+<!-- 表格打印 zjfree 2024-09-29 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>表格打印</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+h1{
+	text-align: center;
+}
+#btnPrint{
+	position:fixed;
+	top:10px;
+	left: 10px;
+}
+#tbPrintList{
+	border-collapse: collapse;
+	border: solid 3px #666;
+	margin: 0 auto;
+}
+#tbPrintList td, #tbPrintList th{
+	border: solid 1px #666;
+	padding: 5px 10px;
+	text-align: center;
+}
+
+@media print {
+	.noPrint {display:none}
+    @page {
+        size: A4 landscape; /* 纸张尺寸 landscape横向 portrait竖向 */
+        margin: 2cm 1cm; /* 边距 */
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    thead, tfoot, tr, th, td,
+    li {
+        page-break-inside: avoid; /* 禁止内部分页 */
+    }
+
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    nav, aside {
+        display: none;
+    }
+
+    a::after {
+        content: "(" attr(href) ")";
+    }
+	
+    h1 {
+        page-break-before: always; /* 强制分页 */
+    }
+
+	tfoot{
+		display:table-row-group; /* 表格底部仅在最后一页显示 */
+	}
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>表格打印标题</h1>
+<button id="btnPrint" class="noPrint" onclick="window.print();">打印</button>
+
+<table id="tbPrintList">
+	<thead>
+		<tr>
+			<th>序号</th>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>年龄</th>
+			<th>地址</th>
+			<th>电话</th>
+			<th>邮箱</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>张三</td>
+			<td>男</td>
+			<td>20</td>
+			<td>北京</td>
+			<td>13812345678</td>
+			<td>zhangsan@qq.com</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>李四</td>
+			<td>男</td>
+			<td>21</td>
+			<td>上海</td>
+			<td>13812345678</td>
+			<td>lisi@qq.com</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>王五</td>
+			<td>男</td>
+			<td>22</td>
+			<td>广州</td>
+			<td>13812345678</td>
+			<td>wangwu@qq.com</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>赵六</td>
+			<td>男</td>
+			<td>23</td>
+			<td>深圳</td>
+			<td>13812345678</td>
+			<td>zhaoliu@qq.com</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>田七</td>
+			<td>男</td>
+			<td>24</td>
+			<td>杭州</td>
+			<td>13812345678</td>
+			<td>tianqi@qq.com</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="100%">表格底部统计区域</td>
+		</tr>
+	</tfoot>
+</table>
+
+<h1>强制分页后</h1>
+
+<p>
+	1. 表格内容过多，需要分页打印<br>
+	2. 表格内容过少，需要分页打印<br>
+	3. 表格内容过多，需要分页打印<br>
+	4. 表格内容过少，需要分页打印<br>
+	5. 表格内容过多，需要分页打印<br>
+	6. 表格内容过少，需要分页打印表格内容过少，需要分页打印表格内容过少，需要分页打印表格内容过少，需要分页打印表格内容过少，需要分页打印表格内容过少，需要分页打印表格内容过少，需要分页打印<br>
+</p>
+
+<script>
+$(function(){
+	// JS
+	let trList = $('#tbPrintList tbody').html();
+	for(let i=0; i<10; i++){
+		$('#tbPrintList tbody').append(trList);
+	}
+});
+</script>
+
+</body>
+</html>
