@@ -1,0 +1,160 @@
+<!-- 表格编辑 zjfree 2024-10-12 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>表格编辑</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html,body{
+	margin:0;
+	padding: 0;
+	height: 100%;
+}
+
+.ztable-edit{
+	border: 1px solid #000;
+	border-collapse: collapse;
+	min-width: 100%;
+}
+.ztable-edit th,table td{
+	border: 1px solid #000;
+	text-align: center;
+	padding:5px 20px;
+	word-wrap: none;
+	word-break: keep-all;
+}
+.ztable-edit th{
+	background-color: #ddd;
+}
+.ztable-edit tbody tr td:first-child{
+	background-color: #ddd;
+}
+.ztable-edit thead>tr>th{
+    width:1px;
+}
+.ztable-edit tbody tr:hover{
+    background-color: #eff;
+}
+.ztable-edit thead>tr>th:last-child{
+    width:auto;
+    text-align:left;
+	padding:5px 10px;
+}
+.ztable-edit tbody>tr>td:last-child{
+    width:auto;
+    text-align:left;
+	padding:5px 10px;
+}
+.ztable-edit tbody td:focus{
+    background-color: #aff;
+	color:blue;
+}
+.ztable-edit tbody td button{
+	font-size: 0.8em;
+}
+.ztable-edit tfoot td{
+    text-align:left;
+	padding:10px;
+}
+.ztable-edit thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.ztable-edit thead tr{
+	outline: solid 1px #000;
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<table id="tbList" class="ztable-edit">
+	<thead>
+		<tr>
+			<th data-code="id">#</th>
+			<th data-code="name">姓名</th>
+			<th data-code="sex">性别</th>
+			<th data-code="age">年龄</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>张三</td>
+			<td>男</td>
+			<td>20</td>
+			<td><button>删除</button></td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="100%">
+				<button id="btnAdd" type="button">添加</button>
+				&nbsp;
+				<button id="btnSave" type="button">保存</button>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+<script>
+
+function setTdEdit(){
+	$('#tbList tbody td').prop('contenteditable', 'plaintext-only');
+	$('#tbList tbody tr>td:last-child').prop('contenteditable', false);
+	$('#tbList tbody tr>td:first-child').prop('contenteditable', false);
+}
+
+$(function(){
+	// JS
+	$('#btnAdd').click(function(){
+		let html = '<tr>';
+		for(var i=0;i<$('#tbList thead th').length-1;i++){
+			html += '<td></td>';
+		}
+		html += '<td><button>删除</button></td></tr>';
+		$('#tbList').append(html);
+		setTdEdit();
+	});
+	
+	$('#tbList').on('click', 'tbody button', function(){
+		$(this).closest('tr').remove();
+	});
+
+	$('#btnSave').click(function(){
+		let keyList = [];
+		$('#tbList thead th').each(function(){
+			keyList.push($(this).data('code') ?? $(this).text());
+		});
+		var data = [];
+		$('#tbList tbody tr').each(function(){
+			var row = {};
+			for (let i=0;i<keyList.length-1;i++){
+				if (i==0){
+					row['id'] = parseInt($(this).find('td').eq(i).text()) || 0;
+				}else{
+					row[keyList[i]] = $(this).find('td').eq(i).text();
+				}
+			}
+			data.push(row);
+		});
+
+		// 保存数据
+		console.log(data);
+	});
+
+	setTdEdit();
+});
+</script>
+
+</body>
+</html>
