@@ -1,0 +1,173 @@
+<!-- 在线富文本编辑 zjfree 2024-10-15 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>在线富文本编辑</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<link href="https://unpkg.com/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet">
+	<script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
+
+	<style>
+		html,
+		body {
+			background-color: #fff;
+			height: 100%;
+			overflow: hidden;
+			color: #333;
+		}
+
+		#top-container {
+			border-bottom: 1px solid #e8e8e8;
+			padding-left: 30px;
+		}
+
+		#editor-toolbar {
+			width: 1350px;
+			background-color: #FCFCFC;
+			margin: 0 auto;
+		}
+
+		#content {
+			height: calc(100% - 40px);
+			background-color: rgb(245, 245, 245);
+			overflow-y: auto;
+			position: relative;
+		}
+
+		#editor-container {
+			width: 850px;
+			margin: 30px auto 100px auto;
+			background-color: #fff;
+			padding: 20px 50px 50px 50px;
+			border: 1px solid #e8e8e8;
+			box-shadow: 0 2px 10px rgb(0 0 0 / 12%);
+		}
+
+		#title-container input {
+			font-size: 30px;
+			border: 0;
+			outline: none;
+			width: 100%;
+			line-height: 1;
+		}
+
+		#editor-text-area {
+			min-height: 900px;
+			margin-top: 20px;
+		}
+
+		#txtContent {
+			display: none;
+		}
+
+		#btnSave {
+			position: absolute;
+			top: 10px;
+			left: 20px;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<textarea id="txtContent"></textarea>
+	
+	<button id="btnSave" disabled><i class="fa fa-save"></i> 保存</button>
+
+	<div style="border-bottom: 1px solid #e8e8e8;">
+		<div id="editor-toolbar"></div>
+	</div>
+	<div id="content">
+		<div id="editor-container">
+			<div id="editor-text-area"></div>
+		</div>
+	</div>
+
+	<script>
+		var isFirstChange = true;
+		const E = window.wangEditor
+
+		// 切换语言
+		const LANG = location.href.indexOf('lang=en') > 0 ? 'en' : 'zh-CN'
+		E.i18nChangeLanguage(LANG)
+
+		const editorConfig = {
+			placeholder: '输入文档内容',
+			scroll: false, // 禁止编辑器滚动
+			MENU_CONF: {
+				uploadImage: {
+					fieldName: 'your-fileName',
+					maxFileSize: 2 * 1024 * 1024, // 1M
+					base64LimitSize: 2 * 1024 * 1024 // 2M 以下插入 base64
+				}
+			},
+			onChange(editor) {
+				if (isFirstChange) {
+					isFirstChange = false;
+					return;
+				}
+				let content = editor.getHtml();
+				isDocSave = false;
+				$('#btnSave').prop('disabled', false);
+				$('#txtContent').val(content);
+			}
+		}
+
+		// 先创建 editor
+		var content = localStorage.getItem('docData') || '';
+		const editor = E.createEditor({
+			selector: '#editor-text-area',
+			content: [],
+			html: content,
+			config: editorConfig
+		})
+		$('#txtContent').val(content);
+
+		// 创建 toolbar
+		const toolbar = E.createToolbar({
+			editor,
+			selector: '#editor-toolbar',
+			config: {
+				excludeKeys: 'fullScreen',
+			}
+		})
+
+		// 点击空白处 focus 编辑器
+		document.getElementById('editor-text-area').addEventListener('click', e => {
+			if (e.target.id === 'editor-text-area') {
+				editor.blur()
+				editor.focus(true) // focus 到末尾
+			}
+		})
+
+		var isDocSave = true;
+		window.onload = function () {
+			window.addEventListener("beforeunload", function (e) {
+				if (isDocSave) {
+					return undefined;
+				}
+
+				var confirmationMessage = '文档编辑后未保存，确定离开？';
+				(e || window.event).returnValue = confirmationMessage; //Gecko + IE
+				return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+			});
+		};
+
+		$(function () {
+			$('#btnSave').click(function () {
+				localStorage.setItem('docData', $('#txtContent').val());
+				isDocSave = true;
+			});
+		});
+	</script>
+
+</body>
+
+</html>

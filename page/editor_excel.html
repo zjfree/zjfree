@@ -1,0 +1,87 @@
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>在线EXCEL编辑</title>
+  <script src="https://unpkg.com/@univerjs/umd/lib/univer.full.umd.js"></script>
+  <script src="https://unpkg.com/@univerjs/umd/lib/locale/zh-CN.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@univerjs/umd/lib/univer.css">
+  <style>
+    html,body{
+      margin:0;
+      padding:0;
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <div style="position: absolute; top:5px; left:5px; z-index: 100;">
+    <button id="btnSave" onclick="saveData();">保存</button>
+  </div>
+ 
+  <script>
+    var {
+      UniverCore,
+      UniverDesign,
+      UniverEngineRender,
+      UniverEngineFormula,
+      UniverDocs,
+      UniverDocsUi,
+      UniverUi,
+      UniverSheets,
+      UniverSheetsUi,
+      UniverSheetsNumfmt,
+      UniverSheetsFormula,
+      UniverFacade,
+    } = window
+ 
+    var univer = new UniverCore.Univer({
+      theme: UniverDesign.defaultTheme,
+      locale: UniverCore.LocaleType.ZH_CN,
+      locales: {
+        [UniverCore.LocaleType.ZH_CN]: UniverUMD['zh-CN'],
+      },
+    });
+ 
+    univer.registerPlugin(UniverEngineRender.UniverRenderEnginePlugin);
+    univer.registerPlugin(UniverEngineFormula.UniverFormulaEnginePlugin);
+ 
+    univer.registerPlugin(UniverUi.UniverUIPlugin, {
+      container: "app",
+    });
+ 
+    univer.registerPlugin(UniverDocs.UniverDocsPlugin);
+    univer.registerPlugin(UniverDocsUi.UniverDocsUIPlugin);
+ 
+    univer.registerPlugin(UniverSheets.UniverSheetsPlugin);
+    univer.registerPlugin(UniverSheetsUi.UniverSheetsUIPlugin);
+    univer.registerPlugin(UniverSheetsNumfmt.UniverSheetsNumfmtPlugin);
+    univer.registerPlugin(UniverSheetsFormula.UniverSheetsFormulaPlugin);
+ 
+    univer.createUnit(UniverCore.UniverInstanceType.UNIVER_SHEET, getData())
+ 
+    const univerAPI = UniverFacade.FUniver.newAPI(univer)
+
+    function saveData(){ 
+      document.getElementById('btnSave').focus();
+      univerAPI.executeCommand('sheet.operation.set-cell-edit-visible', {
+        visible: false,
+        _eventType: 2,
+      });
+      window.setTimeout(function(){
+        let data = univerAPI.getActiveWorkbook().save();
+        localStorage.setItem('xlsData', JSON.stringify(data));
+      }, 100);
+    }
+
+    function getData(){
+      let strJson = localStorage.getItem('xlsData') || '{}';
+      return JSON.parse(strJson);
+    }
+  </script>
+</body>
+</html>
